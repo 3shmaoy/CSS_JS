@@ -1,0 +1,1226 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+
+        <link rel="stylesheet" type="text/css" href="misc.css" />
+        <link rel="stylesheet" type="text/css" href="stripsTable.css" />
+        <link rel="stylesheet" type="text/css" href="stickyTopLeftTable.css" />
+
+
+        <!-- -->
+        <style type="text/css">
+            :root {
+                --dummyVar: 0;
+
+                /* table.stripped-table tbody tr:nth-child(odd/even) th/d 色オーバーライド*/
+                --oddRowColor: azure;
+                --evenRowColor: white;
+                --oddRowFirstColColour: azure;
+                --evenRowFirstColColour: white;
+                /* */
+
+                /* table.stickyTopLeftTable thead th 色オーバーライド
+                --stickyHeaderColour: lightcyan;
+                /* */
+
+                /* table.stickyTopLeftTable tbody th.stickyLeftColumn 色オーバーライド
+                --stickyLeftColumnColour:'';
+                /* */
+
+                /* div.stickyTopLeftTableContainer */
+                    --containerMaxHeight: 70vh;
+                /* */
+            }
+
+
+            #tblPhoneCallsCount {
+                tbody:first-of-type tr {
+                    /* 職員.合計の行 (上から3番目) */
+                    th, td {
+                        background-color: cornsilk !important; /* override sticky left column & stripped css */
+                    }
+                }
+                thead th {
+                    &.staff-names {
+                        /* 役職部分の行が使用される場合はコメントを外すとpadding:none */
+                        /*border-bottom-style: none; */
+                        padding-bottom: 5px;
+                    }
+                    &.staff-positions {
+                        border-top-style: none;
+                        padding-top: 0;
+                        /*vertical-align: baseline; */
+                    }
+                }
+                td {
+                    &.numbers-totals,
+                    &.numbers-right {
+                        text-align: right;
+                        font-size: 1.2em;
+                        margin: .4em;
+                        padding: .4em;
+                    }
+                    &.numbers-totals {
+                        font-weight: bold;
+                    }
+                }
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <div class="div-SR-container">
+            <div class="div-SR-content">
+                <form  method="post" id="frmPhoneCallsCountReport">
+                    <div class="stickyTopLeftTableContainer" tabindex="9">
+                        <table id="tblPhoneCallsCount" class="stripped-table stickyTopLeftTable">
+                            <thead>
+                                    <tr>
+                                                <th rowspan="2" class="table-corner">受け日</th> <!-- 役職部分の行のため -->
+                                                <th rowspan="2" class="SR-text-up-to-down">&nbsp;</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="社">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="山">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="鈴">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="技">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="石">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="石">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="石">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="陣">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="中">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="横">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="出">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="柴">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="関">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="高">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="A">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="楠">123/th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="吉">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="宇">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="加">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="山">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="鹿">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="惠">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="遠">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="須 "123須</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="小">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="榊 "123榊</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="太">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="鈴">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="高">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="三">123</th>
+                                                <!---->
+                                                <th class="SR-text-up-to-down staff-names" title="中">123</th>
+                                                <!---->
+                                    </tr>
+                                    <tr>
+                                                <!---->
+                                    </tr>
+                            </thead>
+                            <tbody>
+                                    <tr>
+                                                <th class="stickyLeftColumn">&nbsp;</th>
+                                                <td class="numbers-totals">1383</td>
+                                                <!---->
+                                                <td class="numbers-totals">0</td>
+                                                <!---->
+                                                <td class="numbers-totals">30</td>
+                                                <!---->
+                                                <td class="numbers-totals">36</td>
+                                                <!---->
+                                                <td class="numbers-totals">0</td>
+                                                <!---->
+                                                <td class="numbers-totals">185</td>
+                                                <!---->
+                                                <td class="numbers-totals">70</td>
+                                                <!---->
+                                                <td class="numbers-totals">175</td>
+                                                <!---->
+                                                <td class="numbers-totals">77</td>
+                                                <!---->
+                                                <td class="numbers-totals">230</td>
+                                                <!---->
+                                                <td class="numbers-totals">174</td>
+                                                <!---->
+                                                <td class="numbers-totals">162</td>
+                                                <!---->
+                                                <td class="numbers-totals">0</td>
+                                                <!---->
+                                                <td class="numbers-totals">10</td>
+                                                <!---->
+                                                <td class="numbers-totals">0</td>
+                                                <!---->
+                                                <td class="numbers-totals">0</td>
+                                                <!---->
+                                                <td class="numbers-totals">0</td>
+                                                <!---->
+                                                <td class="numbers-totals">0</td>
+                                                <!---->
+                                                <td class="numbers-totals">0</td>
+                                                <!---->
+                                                <td class="numbers-totals">0</td>
+                                                <!---->
+                                                <td class="numbers-totals">29</td>
+                                                <!---->
+                                                <td class="numbers-totals">29</td>
+                                                <!---->
+                                                <td class="numbers-totals">99</td>
+                                                <!---->
+                                                <td class="numbers-totals">0</td>
+                                                <!---->
+                                                <td class="numbers-totals">12</td>
+                                                <!---->
+                                                <td class="numbers-totals">10</td>
+                                                <!---->
+                                                <td class="numbers-totals">14</td>
+                                                <!---->
+                                                <td class="numbers-totals">5</td>
+                                                <!---->
+                                                <td class="numbers-totals">9</td>
+                                                <!---->
+                                                <td class="numbers-totals">11</td>
+                                                <!---->
+                                                <td class="numbers-totals">0</td>
+                                                <!---->
+                                                <td class="numbers-totals">16</td>
+                                                <!---->
+                                    </tr>
+                            </tbody>
+                            <tbody>
+                                                <!---->
+                                    <tr>
+                                                <th class="stickyLeftColumn">2025/04/15(火)</th>
+                                                <td class="numbers-totals">76</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">3</td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">17</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">11</td>
+                                                <!---->
+                                                <td class="numbers-right">12</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">9</td>
+                                                <!---->
+                                                <td class="numbers-right">14</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right">2</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">5</td>
+                                                <!---->
+                                    <tr>
+                                                <th class="stickyLeftColumn">2025/04/14(月)</th>
+                                                <td class="numbers-totals">102</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">20</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">19</td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right">17</td>
+                                                <!---->
+                                                <td class="numbers-right">10</td>
+                                                <!---->
+                                                <td class="numbers-right">10</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">2</td>
+                                                <!---->
+                                                <td class="numbers-right">5</td>
+                                                <!---->
+                                                <td class="numbers-right">11</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">2</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                    <tr>
+                                                <th class="stickyLeftColumn">2025/04/13(日)</th>
+                                                <td class="numbers-totals">1</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                    <tr>
+                                                <th class="stickyLeftColumn">2025/04/12(土)</th>
+                                                <td class="numbers-totals">13</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">11</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                    <tr>
+                                                <th class="stickyLeftColumn">2025/04/11(金)</th>
+                                                <td class="numbers-totals">100</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">4</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">15</td>
+                                                <!---->
+                                                <td class="numbers-right">12</td>
+                                                <!---->
+                                                <td class="numbers-right">9</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">23</td>
+                                                <!---->
+                                                <td class="numbers-right">16</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">3</td>
+                                                <!---->
+                                                <td class="numbers-right">4</td>
+                                                <!---->
+                                                <td class="numbers-right">8</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">4</td>
+                                                <!---->
+                                    <tr>
+                                                <th class="stickyLeftColumn">2025/04/10(木)</th>
+                                                <td class="numbers-totals">81</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">12</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">10</td>
+                                                <!---->
+                                                <td class="numbers-right">2</td>
+                                                <!---->
+                                                <td class="numbers-right">19</td>
+                                                <!---->
+                                                <td class="numbers-right">13</td>
+                                                <!---->
+                                                <td class="numbers-right">11</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">7</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right">2</td>
+                                                <!---->
+                                                <td class="numbers-right">2</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                    <tr>
+                                                <th class="stickyLeftColumn">2025/04/09(水)</th>
+                                                <td class="numbers-totals">111</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">3</td>
+                                                <!---->
+                                                <td class="numbers-right">8</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right">18</td>
+                                                <!---->
+                                                <td class="numbers-right">4</td>
+                                                <!---->
+                                                <td class="numbers-right">23</td>
+                                                <!---->
+                                                <td class="numbers-right">11</td>
+                                                <!---->
+                                                <td class="numbers-right">18</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">2</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">4</td>
+                                                <!---->
+                                                <td class="numbers-right">3</td>
+                                                <!---->
+                                                <td class="numbers-right">12</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">2</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">2</td>
+                                                <!---->
+                                    <tr>
+                                                <th class="stickyLeftColumn">2025/04/08(火)</th>
+                                                <td class="numbers-totals">119</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">7</td>
+                                                <!---->
+                                                <td class="numbers-right">5</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">25</td>
+                                                <!---->
+                                                <td class="numbers-right">3</td>
+                                                <!---->
+                                                <td class="numbers-right">2</td>
+                                                <!---->
+                                                <td class="numbers-right">21</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">19</td>
+                                                <!---->
+                                                <td class="numbers-right">12</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">2</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">4</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">13</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right">2</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">3</td>
+                                                <!---->
+                                    <tr>
+                                                <th class="stickyLeftColumn">2025/04/07(月)</th>
+                                                <td class="numbers-totals">156</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">4</td>
+                                                <!---->
+                                                <td class="numbers-right">8</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">22</td>
+                                                <!---->
+                                                <td class="numbers-right">6</td>
+                                                <!---->
+                                                <td class="numbers-right">10</td>
+                                                <!---->
+                                                <td class="numbers-right">14</td>
+                                                <!---->
+                                                <td class="numbers-right">36</td>
+                                                <!---->
+                                                <td class="numbers-right">20</td>
+                                                <!---->
+                                                <td class="numbers-right">27</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">5</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">4</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                    <tr>
+                                                <th class="stickyLeftColumn">2025/04/06(日)</th>
+                                                <td class="numbers-totals">5</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">4</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                    <tr>
+                                                <th class="stickyLeftColumn">2025/04/05(土)</th>
+                                                <td class="numbers-totals">32</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">4</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">4</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right">3</td>
+                                                <!---->
+                                                <td class="numbers-right">20</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                    <tr>
+                                                <th class="stickyLeftColumn">2025/04/04(金)</th>
+                                                <td class="numbers-totals">113</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">5</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">12</td>
+                                                <!---->
+                                                <td class="numbers-right">8</td>
+                                                <!---->
+                                                <td class="numbers-right">25</td>
+                                                <!---->
+                                                <td class="numbers-right">5</td>
+                                                <!---->
+                                                <td class="numbers-right">18</td>
+                                                <!---->
+                                                <td class="numbers-right">13</td>
+                                                <!---->
+                                                <td class="numbers-right">15</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">4</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">6</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">2</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                    <tr>
+                                                <th class="stickyLeftColumn">2025/04/03(木)</th>
+                                                <td class="numbers-totals">96</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">3</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">14</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">19</td>
+                                                <!---->
+                                                <td class="numbers-right">8</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">17</td>
+                                                <!---->
+                                                <td class="numbers-right">19</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">3</td>
+                                                <!---->
+                                                <td class="numbers-right">2</td>
+                                                <!---->
+                                                <td class="numbers-right">8</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                    <tr>
+                                                <th class="stickyLeftColumn">2025/04/02(水)</th>
+                                                <td class="numbers-totals">144</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">3</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">20</td>
+                                                <!---->
+                                                <td class="numbers-right">13</td>
+                                                <!---->
+                                                <td class="numbers-right">29</td>
+                                                <!---->
+                                                <td class="numbers-right">15</td>
+                                                <!---->
+                                                <td class="numbers-right">24</td>
+                                                <!---->
+                                                <td class="numbers-right">17</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">3</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right">3</td>
+                                                <!---->
+                                                <td class="numbers-right">8</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">2</td>
+                                                <!---->
+                                                <td class="numbers-right">3</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">2</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                    <tr>
+                                                <th class="stickyLeftColumn">2025/04/01(火)</th>
+                                                <td class="numbers-totals">234</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">3</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">23</td>
+                                                <!---->
+                                                <td class="numbers-right">27</td>
+                                                <!---->
+                                                <td class="numbers-right">32</td>
+                                                <!---->
+                                                <td class="numbers-right">2</td>
+                                                <!---->
+                                                <td class="numbers-right">50</td>
+                                                <!---->
+                                                <td class="numbers-right">27</td>
+                                                <!---->
+                                                <td class="numbers-right">27</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">1</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">3</td>
+                                                <!---->
+                                                <td class="numbers-right">2</td>
+                                                <!---->
+                                                <td class="numbers-right">12</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">10</td>
+                                                <!---->
+                                                <td class="numbers-right">3</td>
+                                                <!---->
+                                                <td class="numbers-right">4</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right">5</td>
+                                                <!---->
+                                                <td class="numbers-right">3</td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                                <td class="numbers-right"></td>
+                                                <!---->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            <!-- フッー -->
+            </div> <!-- class="div-SR-content"  closeheadOpenBody(_Popup)  -->
+        </div> <!-- class="div-SR-container"    closeheadOpenBody(_Popup)  -->
+    </body> <!-- closeheadOpenBody(_Popup) -->
+</html> <!-- Header -->

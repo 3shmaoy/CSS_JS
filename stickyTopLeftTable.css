@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+div.stickyTopLeftTableContainer {
+    max-width: var(--containerMaxWidth, 98vw);  /* 24.10.04 T.Nagashima サイズ変更：73→98 */
+    max-height: var(--containerMaxHeight, 70vh);
+    margin: 7px auto;
+    padding: 0;
+    position: relative;
+    overflow: auto;
+    overscroll-behavior-y: contain;
+    border: var(--tableBorder, 1px solid lightgray);
+    &:hover,
+    &:focus-within {
+        box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
+        outline: 0;
+    }
+}
+
+table.stickyTopLeftTable {
+    table-layout: fixed;
+    /*white-space: nowrap;*/
+    margin:0 auto !important;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: var(--tableBorder, 1px solid lightgray);
+    overflow: auto;
+    th {
+        border: var(--tableBorder, 1px solid lightgray);
+        padding: 0.5rem 1rem;
+    }
+    td {
+        border: var(--tableBorder, 1px solid lightgray);
+        padding: 4px 5px;
+    }
+    thead {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        th {
+            background-color: var(--stickyHeaderColour, lightcyan);
+            &.table-corner {
+                position: -webkit-sticky;
+                position: sticky;
+                left: 0;
+                z-index: 3;
+            }
+        }
+    }
+    tbody th.stickyLeftColumn,
+    tfoot th.stickyLeftColumn {
+        /* 透明のままではいけない色があること */
+        position: -webkit-sticky;
+        position: sticky;
+        left: 0;
+        z-index: 1;
+        background-color: var(--stickyLeftColumnColour, white);
+    }
+}

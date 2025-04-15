@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+table.stripped-table tbody {
+    tr:nth-child(odd) {
+        th, td {
+            background-color: var(--oddRowColor, white);
+            /* background-color: var(--oddRowColor, azure); */
+            filter: brightness(98%);
+            backdrop-filter: brightness(97%);
+
+            &:first-child {
+                background-color: var(--oddRowFirstColColour, white);
+            }
+        }
+    }
+    tr:nth-child(even) {
+        th, td {
+            background-color: var(--evenRowColor, white);
+            filter: brightness(102%);
+            backdrop-filter: brightness(103%);
+
+            &:first-child {
+                background-color: var(--evenRowFirstColColour, white);
+            }
+        }
+    }
+}
