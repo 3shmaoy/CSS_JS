@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <style>
+      div.div-parent {
+        counter-reset: childCounter;
+        
+        div.div-child-numbered::before {
+            counter-increment: childCounter;
+            content: counter(childCounter, decimal-leading-zero) '. - ';
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="div-parent">
+      <div class="div-child-numbered">FIRST</div>
+      <div>Un-Numbered</div>
+      <div class="div-child-numbered">SECOND</div>
+    </div>
+  </body>
+</html>
