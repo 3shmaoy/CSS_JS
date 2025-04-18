@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    
+    <style>
+      div.div-half-width {
+        /* only works with true type fonts */
+        font-family: 'Times New Roman', Times, serif;
+        -moz-font-feature-settings: "hwid";
+        -webkit-font-feature-settings: "hwid";
+        font-feature-settings: "hwid";
+      }
+
+    </style>
+  </head>
+  <body>
+    Converted by CSS :
+    <div class="div-half-width">
+      ０１２３４５<br />
+      あアいイうウえエおオ<br />
+      ａＡｂＢｃＣ
+    </div>
+    <br />
+    Not converted :
+    <div>
+        ０１２３４５<br />
+        あアいイうウえエおオ<br />
+        ａＡｂＢｃＣ
+    </div>
+  </body>
+</html>
