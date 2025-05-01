@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!-- !DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd' -->
+<html xmlns='http://www.w3.org/1999/xhtml' lang='ja'>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+        <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        
+        <script>
+            function btnEnable_Clicked ( oEvent ) {
+                const oSctnDemoLogs = document.querySelector('#sctnDemoLogs');
+                const oBtnTextNotify = document.querySelector('#btnTextNotify');
+                const oBtnImgNotify = document.querySelector('#btnImgNotify');
+
+                console.log('Checking.');
+                oSctnDemoLogs.innerText += 'Checking.\n';
+
+
+                if ( !('Notification' in window) ) {
+                    // Check if the browser supports notifications
+                    console.log('This browser does not support notifications.');
+                    oSctnDemoLogs.innerText += 'This browser does not support notifications.\n';
+                } else if ( Notification?.permission === 'granted' ) {
+                    console.log('Already have notification permission.');
+                    oSctnDemoLogs.innerText += 'Already have notification permission.\n';
+                    oBtnTextNotify.disabled = false;
+                    oBtnImgNotify.disabled = false;
+                } else if ( Notification?.permission !== 'denied' ) {
+                    console.log('Requesting notification permission.');
+                    oSctnDemoLogs.innerText += 'Requesting notification permission.\n';
+                    Notification.requestPermission((result) => {
+                        console.log(result);
+                        oSctnDemoLogs.innerText += `${result}.\n`;
+
+                        if ( Notification?.permission === 'granted' ) {
+                            console.log('User granted the permission.');
+                            oSctnDemoLogs.innerText += 'User granted the permission.\n';
+                            oBtnTextNotify.disabled = false;
+                            oBtnImgNotify.disabled = false;
+                        } else {
+                            console.log('Not granted.');
+                            oSctnDemoLogs.innerText += 'Not granted.\n';
+                        }
+                    });
+                } else {
+                    console.log('Already blocked or another unhandled condition.');
+    	            oSctnDemoLogs.innerText += 'Already blocked or another unhandled condition.\n';
+                }
+            }
+
+            function btnTextNotify_Clicked ( oEvent ) {
+                const oSctnDemoLogs = document.querySelector('#sctnDemoLogs');
+
+                if ( Notification?.permission === 'granted' ) {
+                    let i = 1;
+                    // Some browsers (including Firefox) block too frequent notifications.
+                    const oTimerInterval = setInterval(() => {
+                        console.log('Sending a notification.');
+                        oSctnDemoLogs.innerText += 'Sending a notification.\n';
+
+                        const n = new Notification(`Notification № ${i} JS.`, {
+                            // When all notifications have the same tag, each one replaces the preceeding
+                            tag: 'Tag',     //`Tag: ${i}`,
+                        });
+                        if (i === 3) {
+                            clearInterval(oTimerInterval);
+                        } else {}
+                        i++;
+                    }, 1000);
+                } else {
+                    console.log("Still don't have permission to show notifications.");
+                    oSctnDemoLogs.innerText += "Still don't have permission to show notifications.\n";
+                    const oBtnTextNotify = document.querySelector('#btnTextNotify');
+                    const oBtnImgNotify  = document.querySelector('#btnImgNotify');
+                    oBtnTextNotify.disabled = true;
+                    oBtnImgNotify.disabled  = true;
+                }
+            }
+
+            function btnImgNotify ( oEvent ) {
+                const oSctnDemoLogs = document.querySelector('#sctnDemoLogs');
+
+                if ( Notification?.permission === 'granted' ) {
+                    console.log('Sending a notification.');
+                    oSctnDemoLogs.innerText += 'Sending a notification.\n';
+
+
+                    const n = new Notification('Notification IMG JS.', {
+                        body  : 'Desktop IMG Notification',
+                        dir   : 'ltr',
+                        image : 'favicon.ico',
+                        // w/o tag, notifications are not groupped & new ones won't replace the preceeding
+                        // tag: 'Tag',
+                    });
+                } else {
+                    console.log("Still don't have permission to show notifications.");
+                    oSctnDemoLogs.innerText += "Still don't have permission to show notifications.\n";
+                    const oBtnTextNotify = document.querySelector('#btnTextNotify');
+                    const oBtnImgNotify  = document.querySelector('#btnImgNotify');
+                    oBtnTextNotify.disabled = true;
+                    oBtnImgNotify.disabled  = true;
+                }
+            }
+
+            window.addEventListener('load', () => {
+                const oBtnEnable = document.querySelector('#btnEnable');
+                const oBtnTextNotify = document.querySelector('#btnTextNotify');
+                const oBtnImgNotify = document.querySelector('#btnImgNotify');
+
+                oBtnEnable.addEventListener('click', btnEnable_Clicked);
+                oBtnTextNotify.addEventListener('click', btnTextNotify_Clicked);
+                oBtnImgNotify.addEventListener('click',  btnImgNotify);
+            });
+        </script>
+    </head>
+
+    <body>
+        <button type='button' id='btnEnable'>Enable notifications</button>
+        <button type='button' id='btnTextNotify' disabled>Notify (Text)</button>
+        <button type='button' id='btnImgNotify'  disabled>Notify (GUI)</button>
+        <h3>ONLY WORKS WITH HTTPS</h3>
+        <ul>
+            <li>Doesn't work in jsFiddle.</li>
+            <li> Worked on:
+                <ul>
+                    <li>Microsoft Edge Version 130.0.2849.80 (Official build) (64-bit).</li>
+                    <li>Chrome Version 130.0.6723.119 (Official Build) (64-bit).</li>
+                </ul>
+            </li>
+            <li>
+                <a href="https://docs.syteca.com/view/how-to-fix-the-err_ssl_key-usage-incompatible-erro" target="_blank">
+                    Setting SSL for IIS
+                </a>
+                (Version 10.0.19041.320) on Windows 10 Version 22H2 (OS Build 19045.4780).
+            </li>
+        </ul>
+        <div>
+            New-SelfSignedCertificate -Type Custom -DnsName '2003-018','192.168.29.203' -KeyUsage "DigitalSignature","KeyEncipherment","KeyAgreement" -KeyAlgorithm RSA -KeyLength 4096 -CertStoreLocation "cert:\CurrentUser\My" -FriendlyName "SystemRoad.2003-018" -NotAfter (Get-Date).AddMonths(36) -Subject "SystemRoad.2003-018"
+
+            Can skip & just use (if available)
+            IIS  Express Development Certificate
+        </div>
+        <section id='sctnDemoLogs'></section>
+    </body>
+</html>
