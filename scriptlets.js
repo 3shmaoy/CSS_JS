@@ -1,3 +1,4 @@
+// already in a goole query result page searching for that company name
 javascript:(
     function (){
         const oURLparam = new URLSearchParams(window.location.search);
@@ -6,10 +7,10 @@ javascript:(
     }
 )()
 
+// after selecting the company name
+javascript:window.open('https://www.google.com/search?q=' + encodeURIComponent(window.getSelection().toString()) + '+従業員数')
 
-javascript:window.location = 'https://www.google.com/search?q=' + encodeURIComponent(window.getSelection().toString()) + '+従業員数';
-
-
+// highlight all 従業員数 in the page
 javascript:(
     function (){
         const sSearchedText = '従業員数';
@@ -26,3 +27,6 @@ javascript:(
         document.designMode = "off";
     }
 )()
+
+// SR 日報 today's date
+javascript:$('input[name="selDate"]').focus().datepicker('setDate', 'now')
