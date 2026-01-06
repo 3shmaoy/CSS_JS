@@ -19,7 +19,7 @@
 */
 
 /* Dark mode styles */
-@media (prefers-color-scheme: dark) {
+@media screen and (prefers-color-scheme: dark) {
     body {
         background-color: #121212;
         color: #ffffff;
